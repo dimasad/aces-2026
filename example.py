@@ -1,4 +1,6 @@
-import cflib
+import time
+import cflib, cflib.crtp, cflib.crazyflie, cflib.utils.reset_estimator
+import cflib.positioning.position_hl_commander
 
 # Address of the drone. Change the xx below to reflect the tag underneath it.
 URI = 'radio://0/80/2M/E7E7E7E7xx'
@@ -18,11 +20,23 @@ if __name__ == '__main__':
 
     # Create the object used to send position commands to the drone
     with cflib.positioning.position_hl_commander.PositionHlCommander(cf) as cmd:
-        # Each go_to command will move to a given position,
-        # relative to the drone take off location
-        cmd.go_to(x=1.0, y=0.0, z=0.5, velocity=0.5)
-        cmd.go_to(x=1.0, y=1.0, z=0.5, velocity=0.5)
-        cmd.go_to(x=0.0, y=1.0, z=0.5, velocity=0.5)
-        cmd.go_to(x=0.0, y=0.0, z=0.5, velocity=0.5)
+        # Hover for one second
+        time.sleep(1)
 
+        # Each go_to command will move to a given position relative to takeoff
+        cmd.go_to(x=0.5, y=0.0, z=0.5, velocity=0.5)
+        time.sleep(1)
+
+        cmd.go_to(x=0.5, y=0.5, z=0.5, velocity=0.5)
+        time.sleep(1)
+
+        cmd.go_to(x=0.0, y=0.5, z=0.5, velocity=0.5)
+        time.sleep(1)
+
+        cmd.go_to(x=0.0, y=0.0, z=0.5, velocity=0.5)
+        time.sleep(1)
+
+        # Land the drone
+        cmd.land(velocity=0.2)
+    
     cf.close_link()
