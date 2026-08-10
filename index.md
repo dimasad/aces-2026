@@ -36,9 +36,27 @@ The driver for the radio used to control the Crazyflie is installed with a tool 
 
 1. Plug the radio in the USB port.
 2. Download and open [Zadig](https://github.com/pbatard/libwdi/releases/download/v1.5.1/zadig-2.9.exe) from <http://zadig.akeo.ie/>.
-3. Launch Zadig, select the CrazyRadio device from the list, choose the **libusb** driver, and click **Install**.
+3. Launch Zadig, select the CrazyRadio device from the list, choose the libusb driver, and click Install.
 4. Make sure the installed driver field says libUSB. If you installed the WinUSB driver (the default option), change it to libusb and replace the driver.
 
-
 If you run into trouble, refer to the [official driver installation documentation](https://www.bitcraze.io/documentation/repository/crazyradio-firmware/master/building/usbwindows/).
+
+## Test the setup with the Crazyflie Client
+
+Before running a program to control the drone, we will test the setup using the graphical user interface.
+Follow the procedure below to control the drone.
+
+1. Open a terminal and run the command `cfclient`.
+This should launch the Crazyflie client UI.
+2. Look up your drone's identifier in a tag below it. 
+These are the last two digits of its address, `E7E7E7E7xx`. 
+If the label underneath the crazyflie says `A0`, for example, then the address of the drone is `E7E7E7E7EA0` and its URI is `radio://0/80/2M/E7E7E7E7EA0`.
+3. Turn on the drone.
+4. Plug in your radio on the USB port, replace the last two digits of the field `Address` with your drone's tag, and click scan.
+5. Connect to the drone, move the drone around, and verify that its orientation shows in the attitude indicator.
+6. Place the drone in the flight area, away from other drones and obstacles.
+7. Click take off on the lower right corner of the screen, move a bit using the arrows, and then land.
+8. Congratulations, the setup works correctly!
+
+## Fly the drone programmatically
 
