@@ -60,3 +60,5 @@ If the label underneath the crazyflie says `A0`, for example, then the address o
 
 ## Fly the drone programmatically
 
+{% include_relative example.py %}
+
