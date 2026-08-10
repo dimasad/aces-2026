@@ -60,6 +60,24 @@ If the label underneath the crazyflie says `A0`, for example, then the address o
 
 ## Fly the drone programmatically
 
+The example file below, `[example.py]`, shows how to programmatically command the drone to fly a preprogrammed sequence.
+The code begins by importing the necessary library modules and creating a variable with the drone's address.
+It then initializes the drivers, the programming interface, and estabilishes a radio connection.
+
+The drone's state estimator is then reset, so that the takeoff position is considered the origin, and the drone is flown through a sequence of points, with moments of hover in between.
+The _x, y, z_ coordinates of the `go_to` commands are in meters (m), and the velocity argument is in meters per second (m/s).
+
+
 ```python
 {% include_relative example.py %}
 ```
+
+Download the file [example.py] and edit the URI line to reflect the drone's address. Then run the program on a terminal with the command below.
+The drone should fly a square trajectory, then land.
+
+```bash
+python example.py
+```
+
+Next, change the program to have the drone fly through an arbitrary path, of your choosing, in the flight area. 
+Additional commands for flying the drone can be found at the official [documentation page](https://www.bitcraze.io/documentation/repository/crazyflie-lib-python/master/api/cflib/positioning/position_hl_commander/).
