@@ -60,7 +60,7 @@ If the label underneath the crazyflie says `A0`, for example, then the address o
 
 ## Fly the drone programmatically
 
-The example file below, [example.py][], shows how to programmatically command the drone to fly a preprogrammed sequence.
+The example file below, [example.py](example.py), shows how to programmatically command the drone to fly a preprogrammed sequence.
 The code begins by importing the necessary library modules and creating a variable with the drone's address.
 It then initializes the drivers, the programming interface, and estabilishes a radio connection.
 
@@ -72,7 +72,7 @@ The _x, y, z_ coordinates of the `go_to` commands are in meters (m), and the vel
 {% include_relative example.py %}
 ```
 
-Download the file [example.py][] and edit the URI line to reflect the drone's address. Then run the program on a terminal with the command below.
+Download the file [example.py](example.py) and edit the URI line to reflect the drone's address. Then run the program on a terminal with the command below.
 The drone should fly a square trajectory, then land.
 
 ```bash
